@@ -3,7 +3,7 @@
 An automated API test suite built with **Playwright Test**, targeting the
 public **GitHub REST API**, wired into a **GitHub Actions** CI pipeline.
 
-This is a pure API-testing project — no browser automation — chosen deliberately
+This is a pure API-testing project, no browser automation, chosen deliberately
 to demonstrate backend/API test design, HTTP assertions, and CI integration,
 which is the core of most QA engineering roles.
 
@@ -31,13 +31,12 @@ used by unrelated traffic before this suite even starts.
 Rather than let tests fail with a misleading assertion error in that situation,
 `tests/helpers/rateLimit.ts` checks the live quota via `/rate_limit` before each
 quota-consuming test and skips with a clear, explicit reason if quota is
-exhausted — instead of reporting a false failure. In CI, this is largely a
+exhausted, instead of reporting a false failure. In CI, this is largely a
 non-issue: `.github/workflows/tests.yml` passes GitHub Actions' auto-provided
 `GITHUB_TOKEN`, which raises the quota to 1000/hour.
 
 This mirrors how you'd actually handle testing against any third-party
-rate-limited API in a real job — not something a tutorial project usually
-bothers to cover, but almost every API test suite in production needs it.
+rate-limited API in a real job. What almost every API test suite in production needs.
 
 ## Running locally
 
@@ -47,7 +46,7 @@ npx playwright test          # run the suite
 npx playwright show-report   # view the HTML report
 ```
 
-No browser binaries are downloaded — these are HTTP-only tests using
+No browser binaries are downloaded, these are HTTP-only tests using
 Playwright's `request` fixture.
 
 ## CI/CD

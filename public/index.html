@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>QA Portfolio Demo App</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 360px; margin: 80px auto; }
+  label { display: block; margin-top: 12px; font-size: 14px; }
+  input { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; }
+  button { margin-top: 20px; padding: 10px 16px; width: 100%; cursor: pointer; }
+  #message { margin-top: 16px; font-weight: bold; }
+  #message.error { color: #b00020; }
+  #message.success { color: #0a7a2f; }
+  #dashboard { display: none; margin-top: 24px; }
+</style>
+</head>
+<body>
+  <h2>Sign in</h2>
+  <form id="login-form">
+    <label for="username">Username</label>
+    <input id="username" name="username" type="text" autocomplete="username" />
+
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" autocomplete="current-password" />
+
+    <button type="submit">Log in</button>
+  </form>
+  <div id="message"></div>
+  <div id="dashboard">
+    <h3>Welcome back!</h3>
+    <p id="welcome-text"></p>
+    <button id="logout-btn">Log out</button>
+  </div>
+
+  <script>
+    const VALID_USER = 'standard_user';
+    const VALID_PASS = 'secret_sauce';
+
+    const form = document.getElementById('login-form');
+    const message = document.getElementById('message');
+    const dashboard = document.getElementById('dashboard');
+    const welcomeText = document.getElementById('welcome-text');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+
+      message.className = '';
+      message.textContent = '';
+
+      if (!username || !password) {
+        message.textContent = 'Username and password are required';
+        message.className = 'error';
+        return;
+      }
+
+      if (username === VALID_USER && password === VALID_PASS) {
+        message.textContent = '';
+        form.style.display = 'none';
+        dashboard.style.display = 'block';
+        welcomeText.textContent = `Logged in as ${username}`;
+      } else {
+        message.textContent = 'Invalid username or password';
+        message.className = 'error';
+      }
+    });
+
+    logoutBtn.addEventListener('click', () => {
+      dashboard.style.display = 'none';
+      form.style.display = 'block';
+      form.reset();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+﻿{
+  "name": "qa-portfolio",
+  "version": "1.0.0",
+  "description": "QA automation portfolio: UI + API tests with Playwright, run via GitHub Actions CI/CD",
+  "scripts": {
+    "test": "playwright test",
+    "test:api": "playwright test tests/api",
+    "test:ui": "playwright test tests/ui",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.47.0"
+  }
+}

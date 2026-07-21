@@ -66,3 +66,5 @@ artifacts. See the **Actions** tab of this repo for run history.
 - Add contract/schema validation with a JSON Schema library (e.g. `ajv`)
 - Add a scheduled (cron) CI run to catch upstream API drift
 - Extend to authenticated endpoints using a PAT stored as a repo secret
+
+Playwright portfolio: https://drive.google.com/drive/folders/1ySM59e54z_9AOoQy6MR3Oh4IHeqZejTl?usp=sharing
